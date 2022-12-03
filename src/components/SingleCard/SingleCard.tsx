@@ -1,8 +1,10 @@
 import { CircleShape } from "../CircleShape/CircleShape";
 import { SquareShape } from "../SquareShape/SquareShape";
 import { TriangleShape } from "../TriangleShape/TriangleShape";
+import PropTypes from "prop-types";
 
 export function SingleCard({ card, dispatch }: any) {
+  console.log("card", {card});
   return (
     <div
       className={card.isClick ? "card big" : "card"}
@@ -25,3 +27,8 @@ export function SingleCard({ card, dispatch }: any) {
     </div>
   );
 }
+
+SingleCard.propTypes = {
+  card: PropTypes.object,
+  dispatch: PropTypes.object,
+};

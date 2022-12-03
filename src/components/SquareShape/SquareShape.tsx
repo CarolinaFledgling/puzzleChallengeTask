@@ -1,4 +1,4 @@
-
+import PropTypes from "prop-types";
 
 export function SquareShape({ card }: any) {
   return (
@@ -16,3 +16,8 @@ export function SquareShape({ card }: any) {
     ></span>
   );
 }
+
+
+SquareShape.propTypes = {
+  card: PropTypes.object,
+};

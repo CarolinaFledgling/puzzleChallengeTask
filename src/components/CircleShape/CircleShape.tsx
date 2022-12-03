@@ -1,5 +1,4 @@
-
-
+import PropTypes from "prop-types";
 export function CircleShape({ card }: any) {
   return (
     <span
@@ -16,3 +15,6 @@ export function CircleShape({ card }: any) {
     ></span>
   );
 }
+CircleShape.propTypes = {
+  card: PropTypes.object,
+};
