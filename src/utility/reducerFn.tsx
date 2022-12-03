@@ -1,5 +1,6 @@
 import { back_color } from "./backColor";
 import { cardsData } from "./cardData";
+import { getRandomIndex } from "./getRandomIndex";
 import { shapesData } from "./shapesData";
 
 export function reducerFn(latestState: any, actionDispatched: any) {
@@ -8,8 +9,8 @@ export function reducerFn(latestState: any, actionDispatched: any) {
       //sort method basically a shuffled current array
       .sort(() => Math.random() - 0.5)
       .map((card) => {
-        const random = Math.floor(Math.random() * back_color.length);
-        const randomShape = Math.floor(Math.random() * shapesData.length);
+        const random = getRandomIndex(back_color);
+        const randomShape = getRandomIndex(shapesData);
         return {
           ...card,
           bgColor: back_color[random].firstColor,
@@ -25,7 +26,7 @@ export function reducerFn(latestState: any, actionDispatched: any) {
 
   if (actionDispatched.type === "CLICK_CARD") {
     const newCardsList = latestState.cardList.map((newCard: any) => {
-      const randomShape = Math.floor(Math.random() * shapesData.length);
+      const randomShape = getRandomIndex(shapesData);
 
       if (newCard.id === actionDispatched.id && newCard.isClick === false) {
         return {
