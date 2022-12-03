@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import { useState, useEffect, useReducer } from "react";
 import "./App.css";
 import { SingleCard } from "./components/SingleCard/SingleCard";
 import { reducerFn } from "./utility/reducerFn";
@@ -15,7 +15,7 @@ function App() {
     setIsLoading(true);
   }, []);
 
-  console.log("cardList", { cardList });
+
   return (
     <>
       {isLoading ? (

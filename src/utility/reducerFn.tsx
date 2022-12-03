@@ -3,8 +3,6 @@ import { cardsData } from "./cardData";
 import { shapesData } from "./shapesData";
 
 export function reducerFn(latestState: any, actionDispatched: any) {
-  console.log("latestState", { latestState });
-
   if (actionDispatched.type === "CREATE_CARDS") {
     const cardsView: any = cardsData
       //sort method basically a shuffled current array
@@ -12,7 +10,6 @@ export function reducerFn(latestState: any, actionDispatched: any) {
       .map((card) => {
         const random = Math.floor(Math.random() * back_color.length);
         const randomShape = Math.floor(Math.random() * shapesData.length);
-        //console.log("randomShape", randomShape);
         return {
           ...card,
           bgColor: back_color[random].firstColor,
@@ -22,7 +19,6 @@ export function reducerFn(latestState: any, actionDispatched: any) {
           isCircle: shapesData[randomShape].isCircle,
         };
       });
-    console.log("CREATE_CARDS", cardsView);
 
     return cardsView;
   }
@@ -57,13 +53,43 @@ export function reducerFn(latestState: any, actionDispatched: any) {
         };
       }
 
-      console.log("newCard", newCard);
       return newCard;
     });
-    console.log(newCardsList, "newCardsList");
+
     return newCardsList;
   }
-  console.log("not in the dispatch", latestState);
+
+  if (actionDispatched.type === "MOUSEENTER_CARD") {
+    const newCardsList = latestState.map((newCard: any) => {
+      if (newCard.id === actionDispatched.id) {
+        return {
+          ...newCard,
+          isMouseEnter: true,
+          isMouseLeave: false,
+        };
+      }
+
+      return newCard;
+    });
+
+    return newCardsList;
+  }
+
+  if (actionDispatched.type === "MOUSELEAVE_CARD") {
+    const newCardsList = latestState.map((newCard: any) => {
+      if (newCard.id === actionDispatched.id) {
+        return {
+          ...newCard,
+          isMouseEnter: false,
+          isMouseLeave: true,
+        };
+      }
+
+      return newCard;
+    });
+
+    return newCardsList;
+  }
 
   // throw new Error();
   return latestState;

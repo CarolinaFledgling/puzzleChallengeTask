@@ -12,6 +12,7 @@ npm start
 ## Requirments
 
 - use TypeScript and make sure everything is statically typed
+
 - each shape must be created pseudo randomly and in a programmatic way (no page refresh is the same)
 - shapes and grid must be fully responsive
 - colors are inverted on hover
