@@ -1,25 +1,69 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect, useReducer } from "react";
+import "./App.css";
+import { reducerFn } from "./utility/reducerFn";
+
+// here we can add initial values if we want
+const initState: any= [];
 
 function App() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [cardList, dispatch] = useReducer(reducerFn, initState);
+
+  useEffect(() => {
+    dispatch({ type: "CREATE_CARDS" });
+    setIsLoading(true);
+  }, []);
+
+  console.log("cardList", { cardList });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {isLoading ? (
+        <div className="card-grid">
+          {cardList.map((card: any) => (
+            <div
+              className={card.isClick ? "card big" : "card"}
+              style={{
+                backgroundColor: `${card.bgColor}`,
+              }}
+              key={card.id}
+            >
+              {card.isTriangle ? (
+                <span
+                  style={{
+                    borderBottom: `50px solid ${card.bgColorShape}`,
+                  }}
+                  className="triangle"
+                ></span>
+              ) : (
+                ""
+              )}
+              {card.isCircle ? (
+                <span
+                  style={{
+                    backgroundColor: `${card.bgColorShape}`,
+                  }}
+                  className="circle"
+                ></span>
+              ) : (
+                ""
+              )}
+              {card.isSquare ? (
+                <span
+                  style={{
+                    backgroundColor: ` ${card.bgColorShape}`,
+                  }}
+                  className="square"
+                ></span>
+              ) : (
+                ""
+              )}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>Loading..</p>
+      )}
+    </>
   );
 }
 
