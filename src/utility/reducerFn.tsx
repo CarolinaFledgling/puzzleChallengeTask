@@ -20,11 +20,11 @@ export function reducerFn(latestState: any, actionDispatched: any) {
         };
       });
 
-    return cardsView;
+    return { cardList: cardsView, loading: true };
   }
 
   if (actionDispatched.type === "CLICK_CARD") {
-    const newCardsList = latestState.map((newCard: any) => {
+    const newCardsList = latestState.cardList.map((newCard: any) => {
       const randomShape = Math.floor(Math.random() * shapesData.length);
 
       if (newCard.id === actionDispatched.id && newCard.isClick === false) {
@@ -48,19 +48,20 @@ export function reducerFn(latestState: any, actionDispatched: any) {
           isMouseEnter: false,
           isMouseLeave: false,
           isClick: false,
-          bgColor: newCard.bgColor,
-          bgColorShape: newCard.bgColorShape,
+          isTriangle: shapesData[randomShape].isTriangle,
+          isSquare: shapesData[randomShape].isSquare,
+          isCircle: shapesData[randomShape].isCircle,
         };
       }
 
       return newCard;
     });
 
-    return newCardsList;
+    return { ...latestState, cardList: newCardsList };
   }
 
   if (actionDispatched.type === "MOUSEENTER_CARD") {
-    const newCardsList = latestState.map((newCard: any) => {
+    const newCardsList = latestState.cardList.map((newCard: any) => {
       if (newCard.id === actionDispatched.id) {
         return {
           ...newCard,
@@ -72,11 +73,11 @@ export function reducerFn(latestState: any, actionDispatched: any) {
       return newCard;
     });
 
-    return newCardsList;
+    return { ...latestState, cardList: newCardsList };
   }
 
   if (actionDispatched.type === "MOUSELEAVE_CARD") {
-    const newCardsList = latestState.map((newCard: any) => {
+    const newCardsList = latestState.cardList.map((newCard: any) => {
       if (newCard.id === actionDispatched.id) {
         return {
           ...newCard,
@@ -88,7 +89,7 @@ export function reducerFn(latestState: any, actionDispatched: any) {
       return newCard;
     });
 
-    return newCardsList;
+    return { ...latestState, cardList: newCardsList };
   }
 
   // throw new Error();
