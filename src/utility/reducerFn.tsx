@@ -22,6 +22,26 @@ export function reducerFn(latestState: any, actionDispatched: any) {
     return cardsView;
   }
 
+  if (actionDispatched.type === "CLICK_CARD") {
+    
+    const newCardsList = latestState.map((newCard: any) => {
+      if (newCard.id === actionDispatched.id) {
+        return {
+          ...newCard,
+          isMouseEnter: false,
+          isMouseLeave: false,
+          isClick: !newCard.isClick,
+          bgColor: actionDispatched.bgColor,
+          bgColorShape: actionDispatched.bgColorShape,
+        };
+      }
+
+      return newCard;
+    });
+    console.log(newCardsList, "newCardsList");
+    return newCardsList;
+    
+  }
   console.log("not in the dispatch", latestState);
   // throw new Error();
   return latestState;

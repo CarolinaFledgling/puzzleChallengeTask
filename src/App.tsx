@@ -22,6 +22,7 @@ function App() {
           {cardList.map((card: any) => (
             <div
               className={card.isClick ? "card big" : "card"}
+              onClick={() => dispatch({ type: 'CLICK_CARD', id: card.id })}
               style={{
                 backgroundColor: `${card.bgColor}`,
               }}
