@@ -1,15 +1,38 @@
 import { back_color } from "./backColor";
 import { cardsData } from "./cardData";
+import { Card } from "../types/CardTypes";
 import { getRandomIndex } from "./getRandomIndex";
 import { shapesData } from "./shapesData";
 
-export function reducerFn(latestState: any, actionDispatched: any) {
+export type DataCardArray = Card[];
+
+type CardListState = {
+  cardList: DataCardArray;
+  loading: boolean;
+};
+
+export type ChangeCardAction = {
+  type: "CLICK_CARD" | "MOUSEENTER_CARD" | "MOUSELEAVE_CARD";
+  id: number;
+};
+
+type CreateCardAction = {
+  type: "CREATE_CARDS";
+};
+
+export type CardActions = ChangeCardAction | CreateCardAction;
+
+export function reducerFn(
+  latestState: CardListState,
+  actionDispatched: CardActions
+) {
   if (actionDispatched.type === "CREATE_CARDS") {
-    const cardsView: any = cardsData
+    const cardsView = cardsData
       //sort method basically a shuffled current array
       .sort(() => Math.random() - 0.5)
       .map((card) => {
         const random = getRandomIndex(back_color);
+        console.log("random", random);
         const randomShape = getRandomIndex(shapesData);
         return {
           ...card,
@@ -25,7 +48,7 @@ export function reducerFn(latestState: any, actionDispatched: any) {
   }
 
   if (actionDispatched.type === "CLICK_CARD") {
-    const newCardsList = latestState.cardList.map((newCard: any) => {
+    const newCardsList = latestState.cardList.map((newCard) => {
       const randomShape = getRandomIndex(shapesData);
 
       if (newCard.id === actionDispatched.id && newCard.isClick === false) {
@@ -62,7 +85,7 @@ export function reducerFn(latestState: any, actionDispatched: any) {
   }
 
   if (actionDispatched.type === "MOUSEENTER_CARD") {
-    const newCardsList = latestState.cardList.map((newCard: any) => {
+    const newCardsList = latestState.cardList.map((newCard) => {
       if (newCard.id === actionDispatched.id) {
         return {
           ...newCard,
@@ -78,7 +101,7 @@ export function reducerFn(latestState: any, actionDispatched: any) {
   }
 
   if (actionDispatched.type === "MOUSELEAVE_CARD") {
-    const newCardsList = latestState.cardList.map((newCard: any) => {
+    const newCardsList = latestState.cardList.map((newCard) => {
       if (newCard.id === actionDispatched.id) {
         return {
           ...newCard,

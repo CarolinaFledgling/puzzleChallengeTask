@@ -4,7 +4,6 @@ import { SingleCard } from "./components/SingleCard/SingleCard";
 import { reducerFn } from "./utility/reducerFn";
 
 
-
 // here we can add initial values if we want
 const initState = {
   cardList: [],
@@ -16,14 +15,13 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: "CREATE_CARDS" });
-  
   }, []);
 
   return (
     <>
       {loading ? (
         <section className="card-grid">
-          {cardList.map((card:any) => (
+          {cardList.map((card) => (
             <SingleCard key={card.id} card={card} dispatch={dispatch} />
           ))}
         </section>
@@ -33,8 +31,5 @@ function App() {
     </>
   );
 }
-
-
-
 
 export default App;

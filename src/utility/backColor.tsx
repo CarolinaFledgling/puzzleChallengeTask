@@ -60,15 +60,15 @@ export const back_color: DataColorArray = [
     opposite: "#322f2f",
   },
   {
-    firstColor: "#276733",
-    opposite: "#a5a5a5",
+    firstColor: "#027216",
+    opposite: "#777777",
   },
   {
-    firstColor: "#c87f74",
-    opposite: "#b39292",
+    firstColor: "#776a6a",
+    opposite: "#ff0000",
   },
   {
     firstColor: "#290b76",
-    opposite: "#283e28",
+    opposite: "#fb91ff",
   },
 ];
