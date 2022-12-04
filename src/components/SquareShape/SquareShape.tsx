@@ -1,6 +1,20 @@
 import PropTypes from "prop-types";
 
-export function SquareShape({ card }: any) {
+type CardSquareShapeProps = {
+  card: {
+    id: number;
+    bgColor: string;
+    bgColorShape: string;
+    isCircle: boolean;
+    isSquare: boolean;
+    isClick: boolean;
+    isTriangle: boolean;
+    isMouseEnter: boolean;
+    isMouseLeave: boolean;
+  };
+};
+
+export function SquareShape({ card }: CardSquareShapeProps) {
   return (
     <span
       style={{
@@ -16,7 +30,6 @@ export function SquareShape({ card }: any) {
     ></span>
   );
 }
-
 
 SquareShape.propTypes = {
   card: PropTypes.object,

@@ -1,5 +1,20 @@
 import PropTypes from "prop-types";
-export function CircleShape({ card }: any) {
+
+type CardCircleShapeProps = {
+  card: {
+    id: number;
+    bgColor: string;
+    bgColorShape: string;
+    isCircle: boolean;
+    isSquare: boolean;
+    isClick: boolean;
+    isTriangle: boolean;
+    isMouseEnter: boolean;
+    isMouseLeave: boolean;
+  };
+};
+
+export function CircleShape({ card }: CardCircleShapeProps) {
   return (
     <span
       style={{
@@ -15,6 +30,8 @@ export function CircleShape({ card }: any) {
     ></span>
   );
 }
+
+
 CircleShape.propTypes = {
   card: PropTypes.object,
 };
