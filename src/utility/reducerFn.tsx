@@ -1,26 +1,11 @@
 import { back_color } from "./backColor";
 import { cardsData } from "./cardData";
-import { Card } from "../types/CardTypes";
 import { getRandomIndex } from "./getRandomIndex";
 import { shapesData } from "./shapesData";
+import { CardActions } from "../types/CardActions";
+import { CardListState } from "../types/CardListState";
 
-export type DataCardArray = Card[];
 
-type CardListState = {
-  cardList: DataCardArray;
-  loading: boolean;
-};
-
-export type ChangeCardAction = {
-  type: "CLICK_CARD" | "MOUSEENTER_CARD" | "MOUSELEAVE_CARD";
-  id: number;
-};
-
-type CreateCardAction = {
-  type: "CREATE_CARDS";
-};
-
-export type CardActions = ChangeCardAction | CreateCardAction;
 
 export function reducerFn(
   latestState: CardListState,
@@ -28,11 +13,10 @@ export function reducerFn(
 ) {
   if (actionDispatched.type === "CREATE_CARDS") {
     const cardsView = cardsData
-      //sort method basically a shuffled current array
+      //sort method here basically a shuffled current array
       .sort(() => Math.random() - 0.5)
       .map((card) => {
         const random = getRandomIndex(back_color);
-        console.log("random", random);
         const randomShape = getRandomIndex(shapesData);
         return {
           ...card,

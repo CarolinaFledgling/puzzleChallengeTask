@@ -2,15 +2,12 @@ import { CircleShape } from "../CircleShape/CircleShape";
 import { SquareShape } from "../SquareShape/SquareShape";
 import { TriangleShape } from "../TriangleShape/TriangleShape";
 import PropTypes from "prop-types";
-import { Card } from "../../types/CardTypes";
-import { CardActions } from "../../utility/reducerFn";
+import { SingleCardProps } from "../../types/SingleCardProps";
 
-type SingleCardProps = {
-  card: Card;
-  dispatch: React.Dispatch<CardActions>;
-};
+
+
 export function SingleCard({ card, dispatch }: SingleCardProps) {
-  // console.log("card", { card });
+
   return (
     <div
       className={card.isClick ? "card big" : "card"}
