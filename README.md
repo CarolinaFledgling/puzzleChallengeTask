@@ -2,12 +2,22 @@
 
 This project has been bootstrapped using [Create React App](https://create-react-app.dev/) and is a test of your skills related to advanced patterns in React. The task at hand is to create a fully responsive grid of boxes with pseudo ranomdly generated background colors. Within each box is a color inverted and pseudo randomly generated shape; triangle, circle or rectangle. Hovering over a box should invert its color, both background color and shape color. Clicking on a box should expand it box in a fluid fashion and create a new randomly generated shape. Page refresh should never display the same content twice. See [exercise-1-demo.mov](./exercise-1-demo.mov) for details.
 
-To get started run the following commands in the terminal.
+## Run Locally
+
+Clone the project
+
+```bash
+https://github.com/CarolinaFledgling/puzzleChallengeTask.git
+```
+
+```bash
+npm install
+# and
+npm start
 
 ```
-npm install
-npm start
-```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Requirments
 
