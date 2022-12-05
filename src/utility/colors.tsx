@@ -5,7 +5,7 @@ interface DataColor {
 
 type DataColorArray = DataColor[];
 
-export const back_color: DataColorArray = [
+export const colors: DataColorArray = [
   {
     firstColor: "#6f0909",
     opposite: "#f5eb26",

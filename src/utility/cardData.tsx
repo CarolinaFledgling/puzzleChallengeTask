@@ -1,11 +1,4 @@
-interface DataCard {
-  id: number;
-  isClick: boolean;
-  isMouseEnter: boolean;
-  isMouseLeave: boolean;
-}
-
-type DataCardsArray = DataCard[];
+import { DataCardsArray } from "../types/DataCard";
 
 export const cardsData: DataCardsArray = [
   {

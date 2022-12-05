@@ -1,11 +1,9 @@
-import { back_color } from "./backColor";
+import { colors } from "./colors";
 import { cardsData } from "./cardData";
 import { getRandomIndex } from "./getRandomIndex";
 import { shapesData } from "./shapesData";
 import { CardActions } from "../types/CardActions";
 import { CardListState } from "../types/CardListState";
-
-
 
 export function reducerFn(
   latestState: CardListState,
@@ -16,12 +14,12 @@ export function reducerFn(
       //sort method here basically a shuffled current array
       .sort(() => Math.random() - 0.5)
       .map((card) => {
-        const random = getRandomIndex(back_color);
+        const random = getRandomIndex(colors);
         const randomShape = getRandomIndex(shapesData);
         return {
           ...card,
-          bgColor: back_color[random].firstColor,
-          bgColorShape: back_color[random].opposite,
+          bgColor: colors[random].firstColor,
+          bgColorShape: colors[random].opposite,
           isTriangle: shapesData[randomShape].isTriangle,
           isSquare: shapesData[randomShape].isSquare,
           isCircle: shapesData[randomShape].isCircle,
@@ -100,6 +98,6 @@ export function reducerFn(
     return { ...latestState, cardList: newCardsList };
   }
 
-  // throw new Error();
+
   return latestState;
 }

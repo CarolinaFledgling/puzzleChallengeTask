@@ -1,10 +1,4 @@
-interface DataShape {
-  isTriangle: boolean;
-  isSquare: boolean;
-  isCircle: boolean;
-}
-
-type DataShapesArray = DataShape[];
+import { DataShapesArray } from "../types/DataShapes";
 
 export const shapesData: DataShapesArray = [
   {
